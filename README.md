@@ -6,6 +6,8 @@
 
 视频演示：待补充（发布后在此填写 B 站演示链接）
 
+> 打包好的 EXE 不放进代码仓库，请到 [Releases](https://github.com/hanaxisa/pdf-maker/releases) 页面下载。
+
 ## 功能
 
 本项目提供三种把视频转成 PDF 的方式：
@@ -151,7 +153,7 @@ python separate_media.py --overwrite
 
 ### EXE 怎么用
 
-`dist/` 中提供六个程序：
+`dist/` 中提供七个程序：
 
 | 程序 | 作用 | 是否需要 Python |
 |------|------|------------------|
@@ -159,10 +161,11 @@ python separate_media.py --overwrite
 | `MediaSeparator.exe` | 把视频拆成「静视频 + 纯音频」 | 否，内置 FFmpeg |
 | `BilibiliDownloader.exe` | 按 BV 号下载 B 站视频（默认只存原视频，`--split` 可分离） | 否，内置 FFmpeg |
 | `InitEnv.exe` | 一键初始化：装依赖、下模型、建目录、自检 | 是，自动选择 Python 3.9+ |
+| `PDF生成工具.exe` | 选视频 / npz、低或高色差、音轨、片尾字幕，直接生成播放器 PDF | 否 |
 | `PDF铺满工具.exe` | 把 PDF 页面铺满到指定纸张大小 | 否 |
 | `gif转mp4.exe` | GIF 表情包转 MP4 | 否 |
 
-MediaSeparator、BilibiliDownloader、PDF铺满工具、gif转mp4 是独立单文件程序；InitEnv 和 OneClick 是启动器，会自动找到依赖最完整的解释器，再把参数原样交给 `init.py` / `analyze.py`。
+MediaSeparator、BilibiliDownloader、PDF生成工具、PDF铺满工具、gif转mp4 是独立单文件程序；InitEnv 和 OneClick 是启动器，会自动找到依赖最完整的解释器，再把参数原样交给 `init.py` / `analyze.py`。
 
 MediaSeparator 和 BilibiliDownloader 都遵循同一条规则：在 **EXE 自己所在的目录**下创建并使用下面三个文件夹，输出文件与源视频同名，方便一一对应。
 
@@ -172,6 +175,7 @@ dist/
 ├── BilibiliDownloader.exe
 ├── InitEnv.exe
 ├── OneClick.exe
+├── PDF生成工具.exe
 ├── PDF铺满工具.exe
 ├── gif转mp4.exe
 └── input/
@@ -308,6 +312,7 @@ python -m PyInstaller --noconfirm --onefile --console --name InitEnv --distpath 
 python -m PyInstaller --noconfirm --onefile --console --name OneClick --distpath dist --workpath build\oneclick --specpath build exe_launcher.py
 python -m PyInstaller --noconfirm --onefile --console --name MediaSeparator --distpath dist --workpath build\mediaseparator --specpath build separate_media.py
 python -m PyInstaller --noconfirm --onefile --console --name BilibiliDownloader --distpath dist --workpath build\bilibili --specpath build download_bilibili.py
+python -m PyInstaller --noconfirm --onefile --windowed --name "PDF生成工具" --distpath dist --workpath build\pdfgen --specpath build tools\pdf_gen_tool.py
 python -m PyInstaller --noconfirm --onefile --windowed --name "PDF铺满工具" --distpath dist --workpath build\filler --specpath build tools\pdf_filler.py
 python -m PyInstaller --noconfirm --onefile --windowed --name "gif转mp4" --distpath dist --workpath build\picker --specpath build tools\gif_picker.py
 ```
