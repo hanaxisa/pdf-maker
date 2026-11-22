@@ -47,7 +47,7 @@ python init.py
 - 选择本机依赖最完整的 Python（例如 3.12），不合适时自动切换解释器并重启自身
 - 安装 `requirements.txt` 中缺失的依赖（默认清华镜像，失败自动回退官方 PyPI）
 - 从 `hf-mirror.com` 下载所选 SAM2 权重到 `checkpoints/`（默认 tiny）
-- 创建 `dist/input/{待分离,静视频,纯音频}` 和 `output/` 目录
+- 创建 `dist/input/{待分离,静视频,纯音频,表情包}` 和 `output/` 目录
 - 写入 `.vscode/settings.json` 的 `python.defaultInterpreterPath`（已有复杂配置时只提示、不覆盖）
 - 最后自动运行 `selfcheck.py` 验证环境
 

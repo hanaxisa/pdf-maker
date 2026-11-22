@@ -175,10 +175,18 @@ def relaunch(exe: str, argv: list[str]) -> int:
 
 
 def ensure_dirs() -> None:
-    for path in (CHECKPOINT_DIR, DIST_INPUT / "待分离", DIST_INPUT / "静视频",
-                 DIST_INPUT / "纯音频", OUTPUT_DIR):
+    dirs = (
+        CHECKPOINT_DIR,
+        DIST_INPUT / "待分离",
+        DIST_INPUT / "静视频",
+        DIST_INPUT / "纯音频",
+        DIST_INPUT / "表情包",
+        OUTPUT_DIR,
+    )
+    for path in dirs:
         path.mkdir(parents=True, exist_ok=True)
     print(f"工作目录已就绪：{DIST_INPUT}")
+    print("已创建工作目录：" + "、".join(path.name for path in dirs))
 
 
 def missing_deps() -> list[str]:
