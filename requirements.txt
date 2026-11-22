@@ -1,0 +1,20 @@
+# Bad Apple PDF 播放器依赖
+# 核心：视频处理 + PDF 生成
+opencv-python>=4.8
+numpy>=1.24
+Pillow>=10.0
+reportlab>=4.0
+pypdf>=4.0
+imageio-ffmpeg>=0.4.9
+
+# B 站公开视频下载
+yt-dlp>=2024.10.22
+
+# 轮廓识别大模型（SAM2）
+torch>=2.5
+torchvision>=0.20
+sam2>=1.0
+huggingface_hub>=0.20
+
+# 可选：传统图像处理增强
+scikit-image>=0.21
